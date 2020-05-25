@@ -1,0 +1,19 @@
+{
+  "name": "cli-project",
+  "version": "1.0.0",
+  "description": "",
+  "bin": "index.js",
+  "scripts": {
+    "lint": "standard --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ricardo Rojas <reddrum7@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "minimist": "^1.2.5",
+    "sqlite3": "^4.2.0"
+  },
+  "devDependencies": {
+    "standard": "^14.3.4"
+  }
+}
