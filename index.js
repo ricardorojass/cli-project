@@ -2,12 +2,14 @@
 
 'use-strict'
 
+require('dotenv').config()
+
 const minimist = require('minimist')
-const { createDb } = require('./lib/db')
+const { createDb } = require('./lib/')
 const argv = minimist(process.argv.slice(2))
 
 async function main () {
-  const db = await createDb()
+  const db = await createDb(process.env.DB_TYPE)
   const command = argv._.shift()
 
   switch (command) {
@@ -56,7 +58,7 @@ async function main () {
         const { user, name } = argv
         const secret = await db.getSecret(user, name)
         if (!secret) return console.log(`secret ${name} not found`)
-        console.log(`- ${secret.name} = ${secret.value}`);
+        console.log(`- ${secret.name} = ${secret.value}`)
       } catch (err) {
         throw new Error('Cannot get secret')
       }
