@@ -83,6 +83,22 @@ async function main () {
         throw new Error('Cannot delete secret')
       }
       break
+    case 'users:createFakeUsers':
+      try {
+        await db.createFakeUsers()
+        console.log('Users created')
+      } catch(err) {
+        throw new Error('Cannot create users')
+      }
+      break
+    case 'users:createFakeSecrets':
+      try {
+        await db.createFakeSecrets()
+        console.log('Secrets created')
+      } catch(err) {
+        throw new Error('Cannot create secrets')
+      }
+      break
     default:
       console.error(`Command not found ${command}`)
   }
