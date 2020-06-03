@@ -26,7 +26,7 @@ async function main () {
       try {
         const results = await db.listUsers()
         results.users.forEach(user => {
-          console.log(`- ${user.user}`)
+          console.log(`- ${user.username}`)
         })
         console.log(`\tTotal ${results.count}`)
       } catch (err) {
@@ -45,10 +45,11 @@ async function main () {
     case 'secrets:list':
       try {
         const { user } = argv
-        const secrets = await db.listSecrets(user)
-        secrets.forEach(s => {
+        const results = await db.listSecrets(user)
+        results.secrets.forEach(s => {
           console.log(`- ${s.name}`);
         })
+        console.log(`\tTotal ${results.count}`)
       } catch (err) {
         throw new Error('Cannot list secrets')
       }
